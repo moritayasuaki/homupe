@@ -5,7 +5,7 @@ $(function (){
 
   var sock = io.connect();
   sock.on('connect', function () {
-    sock.emit('set name', window.prompt('Namae wo irete ne!'));
+    sock.emit('set user', window.prompt('Namae wo irete ne!'));
   });
 
   $('#messageform').submit(function() {
@@ -15,13 +15,13 @@ $(function (){
   });
 
   sock.on('msg', function(msg) {
-    $("#chat").prepend($("<p/>").text(escape(msg.name) + ': ' + escape(msg.msg)));
+    $("#chat").prepend($("<p/>").text(escape(msg.user.name) + ': ' + escape(msg.msg)).css({color:msg.user.color}));
   });
 
   sock.on('members', function(members) {
-    $("#members ul li").empty();
-    for (member in members) {
-      $("#members ul").append($("<li/>").text(escape(member)));
+    $members= $("#members").empty();
+    for (var i = 0; i < members.length; i++) {
+      $members.append($("<li/>").text(escape(members[i].name)));
     }
   });
 });
