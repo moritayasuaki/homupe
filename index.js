@@ -112,6 +112,7 @@ var Poem = mongoose.model('Poem', PoemSchema);
       delete members[sockClient.id];
       sockServer.sockets.emit("members", hash2list(members));
     });
+    sockServer.sockets.emit("members", hash2list(members));
   });
 
   console.log("http server running at http://localhost:" + port + "/ (" + root + ")");
