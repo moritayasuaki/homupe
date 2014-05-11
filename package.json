@@ -1,0 +1,24 @@
+{
+  "name": "homupe",
+  "version": "0.0.0",
+  "description": "mukashi nagara no homepage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "homupe"
+  ],
+  "author": "Yasuaki MORITA",
+  "license": "KASRAC JAPAN",
+  "devDependencies": {
+    "connect": "^2.15.0",
+    "mongoose": "^3.8.9",
+    "connect-route": "^0.1.4",
+    "socket.io": "^0.9.16",
+    "compression": "^1.0.2",
+    "cookie-session": "^1.0.2",
+    "body-parser": "^1.1.0",
+    "serve-static": "^1.1.0"
+  }
+}

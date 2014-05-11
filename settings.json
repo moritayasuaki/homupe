@@ -1,0 +1,4 @@
+{
+  "secretkeys": ["secret1", "secret2"],
+  "dbserver": "mongodb://172.17.0.4"
+}
