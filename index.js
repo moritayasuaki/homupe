@@ -94,15 +94,13 @@ var Poem = mongoose.model('Poem', PoemSchema);
     return list;
   };
   sockServer.sockets.on('connection', function(sockClient){
-    console.log(sockClient.id);
-    sockClient.on('set name', function(name) {
-      sockClient.set('name', name);
-      members[sockClient.id] = name;
+    sockClient.on('set user', function(name) {
+      sockClient.set('user', {name:name, color:'#' + Math.floor(Math.random() * 0xFFFFFF).toString(16)});
       sockServer.sockets.emit("members", hash2list(members));
     });
     sockClient.on('msg', function(msg){ 
-      sockClient.get('name', function (err, name) {
-        sockServer.sockets.emit('msg', {name:name, msg:msg});
+      sockClient.get('user', function (err, user) {
+        sockServer.sockets.emit('msg', {user:user, msg:msg});
       });
     });
     sockClient.on('disconnect', function () {
