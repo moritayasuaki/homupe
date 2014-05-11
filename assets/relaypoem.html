@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>chat</title>
+<title>homupe</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
 <link rel="stylesheet" href="homupe.css"/>
 <link rel="stylesheet" media="only screen and (max-device-width:480px)" href="smartphone.css"/>
 <script src="//code.jquery.com/jquery-latest.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="chat.js"></script>
+<script src="relaypoem.js"></script>
 </head>
+
 <body>
-<h1>chat room</h1>
-<form id="messageform"><input></form>
-<div id="chat"></div>
-<h2>members</h2>
-<div class="memberlist">
-<ul id="members"></ul>
-</div>
+<h1>relay shosetsu no oheya desu</h1>
+<div class="relaypoem"></div>
+
+<form>
+<fieldset>
+<input id="author" placeholder="anata no namae"></input><br/>
+<textarea id="text" placeholder="bunsyou wo irete ne" cols="80" rows="20"></textarea></br>
+<button id="submit">Submit Your Poem!</button>
+</fieldset>
+</form>
 </body>
+</html>

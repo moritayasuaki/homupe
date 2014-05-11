@@ -19,9 +19,9 @@ $(function (){
   });
 
   sock.on('members', function(members) {
-    $("#members ul li").empty();
-    for (member in members) {
-      $("#members ul").append($("<li/>").text(escape(member)));
+    $members= $("#members").empty();
+    for (var i = 0; i < members.length; i++) {
+      $members.append($("<li/>").text(escape(members[i])));
     }
   });
 });

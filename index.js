@@ -26,7 +26,6 @@ var Counter = mongoose.model('Counter', CounterSchema);
 
 (function(root, port) {
   var db = mongoose.connect(dbserver);
-  console.log(db);
   var route = connectRoute(function (router) {
     router.get('/api/counter', function(req, res, next) {
       Counter.findOne({}, function(err, counter){
@@ -57,15 +56,22 @@ var Counter = mongoose.model('Counter', CounterSchema);
     .listen(port);
 
   var sockServer = io.listen(httpServer);
+  var members = {};
   sockServer.sockets.on('connection', function(sockClient){
+    console.log(sockClient.id);
     sockClient.on('set name', function(name) {
       sockClient.set('name', name);
+      members[sockClient.id] = name;
+      sockServer.sockets.emit("members", members);
     });
     sockClient.on('msg', function(msg){ 
       sockClient.get('name', function (err, name) {
         sockServer.sockets.emit('msg', {name:name, msg:msg});
       });
     });
+    sockClient.on('disconnect', function () {
+      delete members[sockClient.id];
+    })
   });
 
   console.log("http server running at http://localhost:" + port + "/ (" + root + ")");
