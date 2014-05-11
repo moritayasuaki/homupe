@@ -116,6 +116,6 @@ var Poem = mongoose.model('Poem', PoemSchema);
   });
 
   console.log("http server running at http://localhost:" + port + "/ (" + root + ")");
-}(process.argv[2] || "./assets",
+}(process.argv[2] || "/homupe/assets",
   process.argv[3] || "80"));
 
