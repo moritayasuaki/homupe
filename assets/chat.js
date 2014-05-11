@@ -3,7 +3,7 @@ $(function (){
     return $('<div/>').text(val).html();
   }
 
-  var sock = io.connect();
+  var sock = io.connect('',{'sync disconnect on unload':true});
   sock.on('connect', function () {
     sock.emit('set user', window.prompt('Namae wo irete ne!'));
   });
