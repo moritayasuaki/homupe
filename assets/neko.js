@@ -11,7 +11,7 @@ $(function() {
         y = $(window).height/2;
         var neko = nekos[i];
         $("body").append($("<div>")
-          .css({position:'absolute', top:y, left:0})
+          .css({position:'absolute', top:y, left:-neko.images.low_resolution.width})
           .animate({ left:$(window).width() }, 1800, function(){$(".neko").remove()})
           .click(function(){
             clearInterval(timer);
