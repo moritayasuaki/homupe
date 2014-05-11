@@ -95,7 +95,12 @@ var Poem = mongoose.model('Poem', PoemSchema);
   };
   sockServer.sockets.on('connection', function(sockClient){
     sockClient.on('set user', function(name) {
-      sockClient.set('user', {name:name, color:'#' + Math.floor(Math.random() * 0xFFFFFF).toString(16)});
+      var user = {
+        name: name,
+        color:'#' + Math.floor(Math.random() * 0xFFFFFF).toString(16)
+      };
+      sockClient.set('user', user);
+      members[sockClient.id]=user;
       sockServer.sockets.emit("members", hash2list(members));
     });
     sockClient.on('msg', function(msg){ 

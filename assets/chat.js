@@ -21,7 +21,7 @@ $(function (){
   sock.on('members', function(members) {
     $members= $("#members").empty();
     for (var i = 0; i < members.length; i++) {
-      $members.append($("<li/>").text(escape(members[i])));
+      $members.append($("<li/>").text(escape(members[i].name)));
     }
   });
 });
